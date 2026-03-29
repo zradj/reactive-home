@@ -1,14 +1,22 @@
 package io.github.zradj.reactive_home.command;
 
+import io.github.zradj.reactive_home.smart_device.SmartAlarm;
+
 public class ArmAlarmCommand implements Command {
+
+  private final SmartAlarm alarm;
+
+  public ArmAlarmCommand(SmartAlarm alarm) {
+    this.alarm = alarm;
+  }
 
   @Override
   public void execute() {
-    System.out.println("[Arm Alarm Command] Arm alarm is turned on");
+    this.alarm.turnOn();
   }
 
   @Override
   public void undo() {
-    System.out.println("[Arm Alarm Command] Undone, the arm alarm is turned off");
+    this.alarm.turnOff();
   }
 }

@@ -18,6 +18,14 @@ public class SmartAlarm implements Observer {
     this.setStrategy(strategyName);
   }
 
+  public void turnOn() {
+    this.strategy.executeAlert();
+  }
+
+  public void turnOff() {
+    System.out.println("[Smart Alarm] The alarm is off");
+  }
+
   public void setStrategy(String strategyName) {
     if (!AlertStrategy.REGISTRY.containsKey(strategyName)) {
       throw new IllegalArgumentException("Unexpected strategy name: " + strategyName);
@@ -28,6 +36,6 @@ public class SmartAlarm implements Observer {
 
   @Override
   public void update() {
-    this.strategy.executeAlert();
+    turnOn();
   }
 }

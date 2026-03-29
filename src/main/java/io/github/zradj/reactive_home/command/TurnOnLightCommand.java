@@ -1,14 +1,22 @@
 package io.github.zradj.reactive_home.command;
 
+import io.github.zradj.reactive_home.smart_device.SmartLights;
+
 public class TurnOnLightCommand implements Command {
+
+  private final SmartLights lights;
+
+  public TurnOnLightCommand(SmartLights lights) {
+    this.lights = lights;
+  }
 
   @Override
   public void execute() {
-    System.out.println("[Turn On Light Command] The lights are on");
+    this.lights.turnOn();
   }
 
   @Override
   public void undo() {
-    System.out.println("[Turn On Light Command] Undone, the lights are off");
+    this.lights.turnOff();
   }
 }

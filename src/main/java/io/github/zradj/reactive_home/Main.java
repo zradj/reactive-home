@@ -37,7 +37,8 @@ public class Main {
     System.out.println();
 
     SmartRemote smartRemote =
-        new SmartRemote(Arrays.asList(new TurnOnLightCommand(), new ArmAlarmCommand()));
+        new SmartRemote(
+            Arrays.asList(new TurnOnLightCommand(smartLights), new ArmAlarmCommand(smartAlarm)));
     smartRemote.pressButton(0);
     smartRemote.pressButton(1);
     smartRemote.pressUndo();
