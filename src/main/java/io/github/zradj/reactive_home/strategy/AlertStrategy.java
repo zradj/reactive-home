@@ -4,7 +4,7 @@ import java.util.Map;
 
 public interface AlertStrategy {
 
-  Map<String, AlertStrategy> STRATEGY_REGISTRY =
+  Map<String, AlertStrategy> REGISTRY =
       Map.of(
           "SIREN",
           new LoudSirenStrategy(),

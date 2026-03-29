@@ -2,10 +2,6 @@ package io.github.zradj.reactive_home.smart_device;
 
 import io.github.zradj.reactive_home.observer.Observer;
 import io.github.zradj.reactive_home.strategy.AlertStrategy;
-import io.github.zradj.reactive_home.strategy.LoudSirenStrategy;
-import io.github.zradj.reactive_home.strategy.SilentPushStrategy;
-
-import java.util.Map;
 
 public class SmartAlarm implements Observer {
 
@@ -23,10 +19,10 @@ public class SmartAlarm implements Observer {
   }
 
   public void updateStrategy(String strategyName) {
-    if (!AlertStrategy.STRATEGY_REGISTRY.containsKey(strategyName)) {
+    if (!AlertStrategy.REGISTRY.containsKey(strategyName)) {
       throw new IllegalArgumentException("Unexpected strategy name: " + strategyName);
     }
-    this.strategy = AlertStrategy.STRATEGY_REGISTRY.get(strategyName);
+    this.strategy = AlertStrategy.REGISTRY.get(strategyName);
   }
 
   @Override
