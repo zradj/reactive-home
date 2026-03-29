@@ -1,9 +1,13 @@
 package io.github.zradj.reactive_home;
 
+import io.github.zradj.reactive_home.command.ArmAlarmCommand;
+import io.github.zradj.reactive_home.command.TurnOnLightCommand;
 import io.github.zradj.reactive_home.observer.MotionSensor;
 import io.github.zradj.reactive_home.smart_device.SmartAlarm;
 import io.github.zradj.reactive_home.smart_device.SmartLights;
 import io.github.zradj.reactive_home.smart_device.SmartRemote;
+
+import java.util.Arrays;
 
 public class Main {
 
@@ -32,7 +36,8 @@ public class Main {
     System.out.println("=".repeat(50));
     System.out.println();
 
-    SmartRemote smartRemote = new SmartRemote();
+    SmartRemote smartRemote =
+        new SmartRemote(Arrays.asList(new TurnOnLightCommand(), new ArmAlarmCommand()));
     smartRemote.pressButton(0);
     smartRemote.pressButton(1);
     smartRemote.pressUndo();

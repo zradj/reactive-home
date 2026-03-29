@@ -8,5 +8,4 @@ public class SmartLights implements Observer {
   public void update() {
     System.out.println("[Smart Lights] Flashing some blinding lights");
   }
-
 }

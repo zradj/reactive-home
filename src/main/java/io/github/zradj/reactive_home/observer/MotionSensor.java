@@ -8,9 +8,7 @@ public class MotionSensor implements Subject {
   private final List<Observer> observers = new ArrayList<>();
 
   public void detectMotion() {
-    System.out.println(
-        "[Motion Sensor] Motion detected!!!!!!!!! Notifying everyone immediately"
-    );
+    System.out.println("[Motion Sensor] Motion detected!!!!!!!!! Notifying everyone immediately");
 
     notifyObservers();
   }
@@ -31,5 +29,4 @@ public class MotionSensor implements Subject {
       observer.update();
     }
   }
-
 }

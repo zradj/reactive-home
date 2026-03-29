@@ -1,31 +1,30 @@
 package io.github.zradj.reactive_home.smart_device;
 
-import io.github.zradj.reactive_home.command.ArmAlarmCommand;
 import io.github.zradj.reactive_home.command.Command;
-import io.github.zradj.reactive_home.command.TurnOnLightCommand;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class SmartRemote {
 
-  private static final Command[] BUTTON_COMMANDS = {
-    new TurnOnLightCommand(), new ArmAlarmCommand()
-  };
+  private final List<Command> buttonCommands;
   private Command lastCommand;
+
+  public SmartRemote(List<Command> buttonCommands) {
+    this.buttonCommands = buttonCommands;
+  }
 
   public void pressButton(int slot) {
     if (slot < 0) {
       throw new IllegalArgumentException("The slot cannot be negative");
     }
 
-    if (slot >= BUTTON_COMMANDS.length) {
+    if (slot >= buttonCommands.size()) {
       throw new IllegalArgumentException(
-          "There are only " + BUTTON_COMMANDS.length + " buttons, received slot " + slot);
+          "There are only " + buttonCommands.size() + " buttons, received slot " + slot);
     }
 
-    BUTTON_COMMANDS[slot].execute();
-    this.lastCommand = BUTTON_COMMANDS[slot];
+    buttonCommands.get(slot).execute();
+    this.lastCommand = buttonCommands.get(slot);
   }
 
   public void pressUndo() {

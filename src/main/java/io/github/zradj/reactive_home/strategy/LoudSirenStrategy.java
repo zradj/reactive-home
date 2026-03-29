@@ -6,5 +6,4 @@ public class LoudSirenStrategy implements AlertStrategy {
   public void executeAlert() {
     System.out.println("[Loud Siren Strategy] SOUNDING 120dB SIREN!");
   }
-
 }
