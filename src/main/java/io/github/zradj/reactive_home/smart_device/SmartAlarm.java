@@ -9,12 +9,6 @@ import java.util.Map;
 
 public class SmartAlarm implements Observer {
 
-  private static final Map<String, AlertStrategy> STRATEGY_REGISTRY =
-      Map.of(
-          "LoudSirenStrategy",
-          new LoudSirenStrategy(),
-          "SilentPushStrategy",
-          new SilentPushStrategy());
   private AlertStrategy strategy;
 
   public SmartAlarm(AlertStrategy strategy) {
@@ -29,10 +23,10 @@ public class SmartAlarm implements Observer {
   }
 
   public void updateStrategy(String strategyName) {
-    if (!STRATEGY_REGISTRY.containsKey(strategyName)) {
+    if (!AlertStrategy.STRATEGY_REGISTRY.containsKey(strategyName)) {
       throw new IllegalArgumentException("Unexpected strategy name: " + strategyName);
     }
-    this.strategy = STRATEGY_REGISTRY.get(strategyName);
+    this.strategy = AlertStrategy.STRATEGY_REGISTRY.get(strategyName);
   }
 
   @Override
