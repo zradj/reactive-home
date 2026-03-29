@@ -15,13 +15,14 @@ public class SmartAlarm implements Observer {
   }
 
   public SmartAlarm(String strategyName) {
-    this.updateStrategy(strategyName);
+    this.setStrategy(strategyName);
   }
 
-  public void updateStrategy(String strategyName) {
+  public void setStrategy(String strategyName) {
     if (!AlertStrategy.REGISTRY.containsKey(strategyName)) {
       throw new IllegalArgumentException("Unexpected strategy name: " + strategyName);
     }
+    System.out.println("[Smart Alarm] Setting strategy to '" + strategyName + "'...");
     this.strategy = AlertStrategy.REGISTRY.get(strategyName);
   }
 
