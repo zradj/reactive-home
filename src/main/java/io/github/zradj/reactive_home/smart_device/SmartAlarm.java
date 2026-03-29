@@ -18,6 +18,9 @@ public class SmartAlarm implements Observer {
   private AlertStrategy strategy;
 
   public SmartAlarm(AlertStrategy strategy) {
+    if (strategy == null) {
+      throw new NullPointerException("AlertStrategy cannot be null");
+    }
     this.strategy = strategy;
   }
 
